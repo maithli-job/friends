@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Choices Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 70%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 36px;
+        }
+
+        label {
+            margin: 0 15px;
+        }
+
+        .question {
+            margin: 70px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .question p {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        /* Smaller input box for name */
+        input[type="text"] {
+            padding: 10px;
+            margin: 10px 0;
+            width: 250px; /* Smaller width */
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background-color: #4caf50;
+            color: white;
+            font-size: 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .choice-options {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .choice-options label {
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        .choice-options img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            transition: 0.3s;
+        }
+
+        .choice-options img:hover {
+            opacity: 0.8;
+        }
+
+        /* Animation for Hello! Maithili here */
+        .welcome-message {
+            font-size: 40px;
+            text-align: center;
+            color: #ff6347; /* Tomato color for highlighting */
+            opacity: 0;
+            animation: fadeInBounce 2s forwards, colorChange 2s infinite alternate;
+        }
+
+        /* Bounce effect */
+        @keyframes fadeInBounce {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(10px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Color change effect */
+        @keyframes colorChange {
+            0% {
+                color: #ff6347; /* Tomato */
+            }
+            50% {
+                color: #32cd32; /* Lime Green */
+            }
+            100% {
+                color: #ff6347; /* Tomato */
+            }
+        }
+
+        .response {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #e0ffe0;
+            border: 1px solid #4caf50;
+            border-radius: 8px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Welcome Message with Animation -->
+        <div class="welcome-message">Hello! Maithili Here</div>
+
+        <h1>Welcome to the Fun Survey!</h1>
+        <form id="preferences-form">
+            <!-- Smaller input box for name -->
+            <label for="name">Enter your name:</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+
+            <!-- Question 1: Tea or Coffee -->
+            <div class="question">
+                <p>Tea / Coffee</p>
+                <div class="choice-options">
+                    <label for="tea">
+                        <input type="radio" id="tea" name="beverage" value="Tea">
+                        <img src="C:\Users\maith\OneDrive\my tp\tea.jpeg" alt="Tea">
+                    </label>
+                    <label for="coffee">
+                        <input type="radio" id="coffee" name="beverage" value="Coffee">
+                        <img src="C:\Users\maith\OneDrive\my tp\cofee.jpg" alt="Coffee">
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 2: Beach or Mountain -->
+            <div class="question">
+                <p>Beach / Mountain</p>
+                <div class="choice-options">
+                    <label for="beach">
+                        <input type="radio" id="beach" name="vacation" value="Beach">
+                        <img src="C:\Users\maith\OneDrive\my tp\beach.jpg" alt="Beach">
+                    </label>
+                    <label for="mountain">
+                        <input type="radio" id="mountain" name="vacation" value="Mountain">
+                        <img src="C:\Users\maith\OneDrive\my tp\mountain.jpg" alt="Mountain">
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 3: Monkey or Donkey -->
+            <div class="question">
+                <p>Monkey / Donkey</p>
+                <div class="choice-options">
+                    <label for="monkey">
+                        <input type="radio" id="monkey" name="animal" value="Monkey">
+                        <img src="C:\Users\maith\OneDrive\my tp\monkey.jpg" alt="Monkey">
+                    </label>
+                    <label for="donkey">
+                        <input type="radio" id="donkey" name="animal" value="Donkey">
+                        <img src="C:\Users\maith\OneDrive\my tp\donkey.png" alt="Donkey">
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 4: Pasta or Panipuri -->
+            <div class="question">
+                <p>Pasta / Panipuri</p>
+                <div class="choice-options">
+                    <label for="pasta">
+                        <input type="radio" id="pasta" name="food" value="Pasta">
+                        <img src="C:\Users\maith\OneDrive\my tp\pasta.jpeg" alt="Pasta">
+                    </label>
+                    <label for="panipuri">
+                        <input type="radio" id="panipuri" name="food" value="Panipuri">
+                        <img src="C:\Users\maith\OneDrive\my tp\panipuri.jpeg" alt="Panipuri">
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 5: Study or Sleep -->
+            <div class="question">
+                <p>Study / Sleep</p>
+                <div class="choice-options">
+                    <label for="study">
+                        <input type="radio" id="study" name="activity" value="Study">
+                        <img src="C:\Users\maith\OneDrive\my tp\study.jpeg" alt="Study">
+                    </label>
+                    <label for="sleep">
+                        <input type="radio" id="sleep" name="activity" value="Sleep">
+                        <img src="C:\Users\maith\OneDrive\my tp\sllep.jpeg" alt="Sleep">
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 6: Traditional or Western Dress -->
+            <div class="question">
+                <p>Traditional / Western Dress</p>
+                <div class="choice-options">
+                    <label for="traditional">
+                        <input type="radio" id="traditional" name="dress" value="Traditional">
+                        <img src="C:\Users\maith\OneDrive\my tp\traditional.jpeg" alt="Traditional">
+                    </label>
+                    <label for="western">
+                        <input type="radio" id="western" name="dress" value="Western">
+                        <img src="C:\Users\maith\OneDrive\my tp\western.jpeg" alt="Western">
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 7: Bike/Scooter or Car -->
+            <div class="question">
+                <p>Bike/Scooter / Car</p>
+                <div class="choice-options">
+                    <label for="bike">
+                        <input type="radio" id="bike" name="transport" value="Bike/Scooter">
+                        <img src="C:\Users\maith\OneDrive\my tp\bike.jpeg" alt="Bike/Scooter">
+                    </label>
+                    <label for="car">
+                        <input type="radio" id="car" name="transport" value="Car">
+                        <img src="C:\Users\maith\OneDrive\my tp\car.jpeg" alt="Car">
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 8: Flower or Expensive Gifts -->
+            <div class="question">
+                <p>Flower / Expensive Gifts</p>
+                <div class="choice-options">
+                    <label for="flower">
+                        <input type="radio" id="flower" name="gift" value="Flower">
+                        <img src="C:\Users\maith\OneDrive\my tp\flower.webp" alt="Flower">
+                    </label>
+                    <label for="gifts">
+                        <input type="radio" id="gifts" name="gift" value="Expensive Gifts">
+                        <img src="C:\Users\maith\OneDrive\my tp\expensive.jpeg" alt="Expensive Gifts">
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 9: Day or Night -->
+            <div class="question">
+                <p>Day / Night</p>
+                <div class="choice-options">
+                    <label for="day">
+                        <input type="radio" id="day" name="time" value="Day">
+                        <img src="C:\Users\maith\OneDrive\my tp\day.jpeg" alt="Day">
+                    </label>
+                    <label for="night">
+                        <input type="radio" id="night" name="time" value="Night">
+                        <img src="C:\Users\maith\OneDrive\my tp\night.jpeg" alt="Night">
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 10: Choose your favorite season -->
+            <div class="question">
+                <p>Choose your favorite season</p>
+                <div class="choice-options">
+                    <label for="spring">
+                        <input type="radio" id="spring" name="season" value="Spring">
+                        <img src="C:\Users\maith\OneDrive\my tp\spring.jpeg" alt="Spring">
+                    </label>
+                    <label for="summer">
+                        <input type="radio" id="summer" name="season" value="Summer">
+                        <img src="C:\Users\maith\OneDrive\my tp\summer.jpeg" alt="Summer">
+                    </label>
+                </div>
+            </div>
+
+            <!-- New Questions -->
+            <!-- Question 11: Notebook or Laptop -->
+            <div class="question">
+                <p>Notebook / Laptop</p>
+                <div class="choice-options">
+                    <label for="notebook">
+                        <input type="radio" id="notebook" name="device" value="Notebook">
+                        <img src="C:\Users\maith\OneDrive\my tp\notebook.jpeg" alt="Notebook">
+                    </label>
+                    <label for="laptop">
+                        <input type="radio" id="laptop" name="device" value="Laptop">
+                        <img src="C:\Users\maith\OneDrive\my tp\laptop.jpeg" alt="Laptop">
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 12: Text or Call -->
+            <div class="question">
+                <p>Text / Call</p>
+                <div class="choice-options">
+                    <label for="text">
+                        <input type="radio" id="text" name="communication" value="Text">
+                        <img src="C:\Users\maith\OneDrive\my tp\text.png" alt="Text">
+                    </label>
+                    <label for="call">
+                        <input type="radio" id="call" name="communication" value="Call">
+                        <img src="C:\Users\maith\OneDrive\my tp\call.png" alt="Call">
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 13: Sing or Dance -->
+            <div class="question">
+                <p>Sing / Dance</p>
+                <div class="choice-options">
+                    <label for="sing">
+                        <input type="radio" id="sing" name="activity" value="Sing">
+                        <img src="C:\Users\maith\OneDrive\my tp\sing.jpeg" alt="Sing">
+                    </label>
+                    <label for="dance">
+                        <input type="radio" id="dance" name="activity" value="Dance">
+                        <img src="C:\Users\maith\OneDrive\my tp\dance.jpeg" alt="Dance">
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 14: Android or iPhone -->
+            <div class="question">
+                <p>Android / iPhone</p>
+                <div class="choice-options">
+                    <label for="android">
+                        <input type="radio" id="android" name="phone" value="Android">
+                        <img src="C:\Users\maith\OneDrive\my tp\phone.jpeg" alt="Android">
+                    </label>
+                    <label for="iphone">
+                        <input type="radio" id="iphone" name="phone" value="iPhone">
+                        <img src="C:\Users\maith\OneDrive\my tp\iphone.jpeg" alt="iPhone">
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 15: Vanilla or Chocolate -->
+            <div class="question">
+                <p>Vanilla / Chocolate</p>
+                <div class="choice-options">
+                    <label for="vanilla">
+                        <input type="radio" id="vanilla" name="flavor" value="Vanilla">
+                        <img src="C:\Users\maith\OneDrive\my tp\vallina.jpeg" alt="Vanilla">
+                    </label>
+                    <label for="chocolate">
+                        <input type="radio" id="chocolate" name="flavor" value="Chocolate">
+                        <img src="C:\Users\maith\OneDrive\my tp\chocolate.jpeg" alt="Chocolate">
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 16: Sneakers or Heels -->
+            <div class="question">
+                <p>Sneakers / Heels</p>
+                <div class="choice-options">
+                    <label for="sneakers">
+                        <input type="radio" id="sneakers" name="shoes" value="Sneakers">
+                        <img src="C:\Users\maith\OneDrive\my tp\sneekers.jpeg" alt="Sneakers">
+                    </label>
+                    <label for="heels">
+                        <input type="radio" id="heels" name="shoes" value="Heels">
+                        <img src="C:\Users\maith\OneDrive\my tp\heels.jpeg" alt="Heels">
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 17: Online shopping or In-store -->
+            <div class="question">
+                <p>Online Shopping / In-store</p>
+                <div class="choice-options">
+                    <label for="online">
+                        <input type="radio" id="online" name="shopping" value="Online">
+                        <img src="C:\Users\maith\OneDrive\my tp\onlineshopping.jpeg" alt="Online Shopping">
+                    </label>
+                    <label for="instore">
+                        <input type="radio" id="instore" name="shopping" value="In-store">
+                        <img src="C:\Users\maith\OneDrive\my tp\store.jpeg" alt="In-store Shopping">
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 18: Introvert or Extrovert -->
+            <div class="question">
+                <p>Introvert / Extrovert</p>
+                <div class="choice-options">
+                    <label for="introvert">
+                        <input type="radio" id="introvert" name="personality" value="Introvert">
+                        <img src="C:\Users\maith\OneDrive\my tp\introvert.jpeg" alt="Introvert">
+                    </label>
+                    <label for="extrovert">
+                        <input type="radio" id="extrovert" name="personality" value="Extrovert">
+                        <img src="C:\Users\maith\OneDrive\my tp\extrovert.jpeg" alt="Extrovert">
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 19: Travel to the past or future -->
+            <div class="question">
+                <p>Travel to the Past or Future</p>
+                <div class="choice-options">
+                    <label for="past">
+                        <input type="radio" id="past" name="timeTravel" value="Past">
+                        <img src="C:\Users\maith\OneDrive\my tp\past.jpeg" alt="Past">
+                        <p>Past</p>
+                    </label>
+                    <label for="future">
+                        <input type="radio" id="future" name="timeTravel" value="Future">
+                        <img src="C:\Users\maith\OneDrive\my tp\future.jpeg" alt="Future">
+                        <p>Future</p>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 20: Rain or Snow -->
+            <div class="question">
+                <p>Rain / Snow</p>
+                <div class="choice-options">
+                    <label for="rain">
+                        <input type="radio" id="rain" name="weather" value="Rain">
+                        <img src="C:\Users\maith\OneDrive\my tp\rain.jpeg" alt="Rain">
+                    </label>
+                    <label for="snow">
+                        <input type="radio" id="snow" name="weather" value="Snow">
+                        <img src="C:\Users\maith\OneDrive\my tp\snow.jpeg" alt="Snow">
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 21: Sun or Moon -->
+            <div class="question">
+                <p>Sun / Moon</p>
+                <div class="choice-options">
+                    <label for="sun">
+                        <input type="radio" id="sun" name="sky" value="Sun">
+                        <img src="C:\Users\maith\OneDrive\my tp\sun.jpeg" alt="Sun">
+                    </label>
+                    <label for="moon">
+                        <input type="radio" id="moon" name="sky" value="Moon">
+                        <img src="C:\Users\maith\OneDrive\my tp\moon.jpeg" alt="Moon">
+                    </label>
+                </div>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <!-- Display the response -->
+        <div id="response" class="response">
+            <h3>Your Selected Preferences:</h3>
+            <p id="nameResponse"></p>
+            <p id="beverageResponse"></p>
+            <p id="vacationResponse"></p>
+            <p id="animalResponse"></p>
+            <p id="foodResponse"></p>
+            <p id="activityResponse"></p>
+            <p id="dressResponse"></p>
+            <p id="transportResponse"></p>
+            <p id="giftResponse"></p>
+            <p id="timeResponse"></p>
+            <p id="seasonResponse"></p>
+            <p id="deviceResponse"></p>
+            <p id="communicationResponse"></p>
+            <p id="singDanceResponse"></p>
+            <p id="phoneResponse"></p>
+            <p id="flavorResponse"></p>
+            <p id="shoesResponse"></p>
+            <p id="shoppingResponse"></p>
+            <p id="personalityResponse"></p>
+            <p id="timeTravelResponse"></p>
+            <p id="weatherResponse"></p>
+            <p id="skyResponse"></p>
+            <button id="downloadButton" style="display: none;">Download Your Responses</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('preferences-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Get name
+            const name = document.getElementById('name').value;
+
+            // Get selected options
+            const beverage = document.querySelector('input[name="beverage"]:checked');
+            const vacation = document.querySelector('input[name="vacation"]:checked');
+            const animal = document.querySelector('input[name="animal"]:checked');
+            const food = document.querySelector('input[name="food"]:checked');
+            const activity = document.querySelector('input[name="activity"]:checked');
+            const dress = document.querySelector('input[name="dress"]:checked');
+            const transport = document.querySelector('input[name="transport"]:checked');
+            const gift = document.querySelector('input[name="gift"]:checked');
+            const time = document.querySelector('input[name="time"]:checked');
+            const season = document.querySelector('input[name="season"]:checked');
+            const device = document.querySelector('input[name="device"]:checked');
+            const communication = document.querySelector('input[name="communication"]:checked');
+            const singDance = document.querySelector('input[name="activity"]:checked');
+            const phone = document.querySelector('input[name="phone"]:checked');
+            const flavor = document.querySelector('input[name="flavor"]:checked');
+            const shoes = document.querySelector('input[name="shoes"]:checked');
+            const shopping = document.querySelector('input[name="shopping"]:checked');
+            const personality = document.querySelector('input[name="personality"]:checked');
+            const timeTravel = document.querySelector('input[name="timeTravel"]:checked');
+            const weather = document.querySelector('input[name="weather"]:checked');
+            const sky = document.querySelector('input[name="sky"]:checked');
+
+            // Set response text
+            document.getElementById('nameResponse').textContent = `Name: ${name}`;
+            document.getElementById('beverageResponse').textContent = `Beverage: ${beverage ? beverage.value : 'Not Selected'}`;
+            document.getElementById('vacationResponse').textContent = `Vacation: ${vacation ? vacation.value : 'Not Selected'}`;
+            document.getElementById('animalResponse').textContent = `Animal: ${animal ? animal.value : 'Not Selected'}`;
+            document.getElementById('foodResponse').textContent = `Food: ${food ? food.value : 'Not Selected'}`;
+            document.getElementById('activityResponse').textContent = `Activity: ${activity ? activity.value : 'Not Selected'}`;
+            document.getElementById('dressResponse').textContent = `Dress: ${dress ? dress.value : 'Not Selected'}`;
+            document.getElementById('transportResponse').textContent = `Transport: ${transport ? transport.value : 'Not Selected'}`;
+            document.getElementById('giftResponse').textContent = `Gift: ${gift ? gift.value : 'Not Selected'}`;
+            document.getElementById('timeResponse').textContent = `Time: ${time ? time.value : 'Not Selected'}`;
+            document.getElementById('seasonResponse').textContent = `Season: ${season ? season.value : 'Not Selected'}`;
+            document.getElementById('deviceResponse').textContent = `Device: ${device ? device.value : 'Not Selected'}`;
+            document.getElementById('communicationResponse').textContent = `Communication: ${communication ? communication.value : 'Not Selected'}`;
+            document.getElementById('singDanceResponse').textContent = `Sing/Dance: ${singDance ? singDance.value : 'Not Selected'}`;
+            document.getElementById('phoneResponse').textContent = `Phone: ${phone ? phone.value : 'Not Selected'}`;
+            document.getElementById('flavorResponse').textContent = `Flavor: ${flavor ? flavor.value : 'Not Selected'}`;
+            document.getElementById('shoesResponse').textContent = `Shoes: ${shoes ? shoes.value : 'Not Selected'}`;
+            document.getElementById('shoppingResponse').textContent = `Shopping: ${shopping ? shopping.value : 'Not Selected'}`;
+            document.getElementById('personalityResponse').textContent = `Personality: ${personality ? personality.value : 'Not Selected'}`;
+            document.getElementById('timeTravelResponse').textContent = `Time Travel: ${timeTravel ? timeTravel.value : 'Not Selected'}`;
+            document.getElementById('weatherResponse').textContent = `Weather: ${weather ? weather.value : 'Not Selected'}`;
+            document.getElementById('skyResponse').textContent = `Sky: ${sky ? sky.value : 'Not Selected'}`;
+
+            // Show response section
+            document.getElementById('response').style.display = 'block';
+
+            // Prepare text for downloading
+            const responseText = `
+                Name: ${name}
+                Beverage: ${beverage ? beverage.value : 'Not Selected'}
+                Vacation: ${vacation ? vacation.value : 'Not Selected'}
+                Animal: ${animal ? animal.value : 'Not Selected'}
+                Food: ${food ? food.value : 'Not Selected'}
+                Activity: ${activity ? activity.value : 'Not Selected'}
+                Dress: ${dress ? dress.value : 'Not Selected'}
+                Transport: ${transport ? transport.value : 'Not Selected'}
+                Gift: ${gift ? gift.value : 'Not Selected'}
+                Time: ${time ? time.value : 'Not Selected'}
+                Season: ${season ? season.value : 'Not Selected'}
+                Device: ${device ? device.value : 'Not Selected'}
+                Communication: ${communication ? communication.value : 'Not Selected'}
+                Sing/Dance: ${singDance ? singDance.value : 'Not Selected'}
+                Phone: ${phone ? phone.value : 'Not Selected'}
+                Flavor: ${flavor ? flavor.value : 'Not Selected'}
+                Shoes: ${shoes ? shoes.value : 'Not Selected'}
+                Shopping: ${shopping ? shopping.value : 'Not Selected'}
+                Personality: ${personality ? personality.value : 'Not Selected'}
+                Time Travel: ${timeTravel ? timeTravel.value : 'Not Selected'}
+                Weather: ${weather ? weather.value : 'Not Selected'}
+                Sky: ${sky ? sky.value : 'Not Selected'}
+            `;
+
+            // Enable download button and handle download
+            const downloadButton = document.getElementById('downloadButton');
+            downloadButton.style.display = 'block';
+
+            downloadButton.addEventListener('click', function() {
+                const blob = new Blob([responseText], { type: 'text/plain' });
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = 'responses.txt';
+                link.click();
+            });
+        });
+    </script>
+</body>
+</html>
